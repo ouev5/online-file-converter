@@ -1,0 +1,24 @@
+# 在线文件转换工具 - Python依赖
+# 安装: pip install -r requirements.txt
+
+# Web框架
+Flask==3.0.0
+Flask-CORS==4.0.0
+
+# Word/Docx处理
+python-docx==1.1.0
+
+# PDF处理
+pdf2docx==0.5.8
+python-pptx==0.6.23
+PyMuPDF==1.23.8
+
+# 图片处理
+Pillow==10.1.0
+
+# OCR识别（可选，用于扫描件PDF转PPT）
+pytesseract==0.3.10
+pdf2image==0.1.0
+
+# PDF生成（用于测试）
+reportlab==4.0.7

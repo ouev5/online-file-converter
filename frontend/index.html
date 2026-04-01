@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线文件转换工具</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📁 在线文件转换工具</h1>
+            <p class="subtitle">本地处理 · 安全隐私 · 无文件泄露风险</p>
+        </header>
+
+        <main>
+            <!-- 功能选择区 -->
+            <div class="convert-section">
+                <h2>选择转换类型</h2>
+                <div class="convert-grid">
+                    <button class="convert-btn" data-type="word2pdf">
+                        <span class="icon">📄→📕</span>
+                        <span class="name">Word → PDF</span>
+                        <span class="desc">Word文档转PDF</span>
+                    </button>
+                    <button class="convert-btn" data-type="pdf2word">
+                        <span class="icon">📕→📄</span>
+                        <span class="name">PDF → Word</span>
+                        <span class="desc">PDF转可编辑Word</span>
+                    </button>
+                    <button class="convert-btn" data-type="pdf2pptx">
+                        <span class="icon">📕→📊</span>
+                        <span class="name">PDF → PPT</span>
+                        <span class="desc">PDF转演示文稿</span>
+                    </button>
+                    <button class="convert-btn" data-type="jpg2pdf">
+                        <span class="icon">🖼️→📕</span>
+                        <span class="name">JPG → PDF</span>
+                        <span class="desc">图片转PDF文档</span>
+                    </button>
+                    <button class="convert-btn" data-type="png2pdf">
+                        <span class="icon">🖼️→📕</span>
+                        <span class="name">PNG → PDF</span>
+                        <span class="desc">图片转PDF文档</span>
+                    </button>
+                    <button class="convert-btn" data-type="pdf2images">
+                        <span class="icon">📕→🖼️</span>
+                        <span class="name">PDF → 图片</span>
+                        <span class="desc">PDF导出为图片</span>
+                    </button>
+                    <button class="convert-btn" data-type="merge">
+                        <span class="icon">📚</span>
+                        <span class="name">合并 PDF</span>
+                        <span class="desc">多个PDF合并一个</span>
+                    </button>
+                    <button class="convert-btn" data-type="compress">
+                        <span class="icon">📦</span>
+                        <span class="name">压缩 PDF</span>
+                        <span class="desc">减小PDF文件大小</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 文件上传区 -->
+            <div class="upload-section" id="uploadSection">
+                <h2>上传文件 <span id="selectedTypeHint" style="font-size:14px;color:#888;font-weight:normal"></span></h2>
+                <div class="upload-area" id="dropZone">
+                    <div class="upload-content">
+                        <span class="upload-icon">📤</span>
+                        <p>拖拽文件到此处，或 <label for="fileInput" class="browse-link">点击选择</label></p>
+                        <p class="upload-tip" id="uploadTip">支持: DOC, DOCX, PDF, JPG, PNG, BMP (最大100MB)</p>
+                    </div>
+                    <input type="file" id="fileInput" multiple>
+                </div>
+                
+                <!-- 已选文件列表 -->
+                <div class="file-list" id="fileList"></div>
+                
+                <!-- 转换按钮 -->
+                <div class="action-bar">
+                    <button class="btn-primary" id="convertBtn" disabled>
+                        <span class="btn-icon">⚡</span>
+                        开始转换
+                    </button>
+                    <button class="btn-secondary" id="clearBtn">
+                        清空
+                    </button>
+                </div>
+            </div>
+
+            <!-- 进度显示 -->
+            <div class="progress-section hidden" id="progressSection">
+                <h2>转换进度</h2>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p class="progress-text" id="progressText">准备中...</p>
+            </div>
+
+            <!-- 结果显示 -->
+            <div class="result-section hidden" id="resultSection">
+                <h2>转换结果</h2>
+                <div class="result-content" id="resultContent"></div>
+                <div class="result-actions">
+                    <button class="btn-secondary" id="resetBtn">
+                        继续转换
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>💡 提示：所有文件均在本地处理，不会上传到任何服务器</p>
+            <p>📦 <a href="javascript:void(0)" onclick="cleanTemp()" class="clean-link">清理临时文件</a></p>
+        </footer>
+    </div>
+
+    <!-- 错误提示弹窗 -->
+    <div class="modal hidden" id="errorModal">
+        <div class="modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <div class="modal-icon">❌</div>
+            <p class="modal-message" id="modalMessage"></p>
+            <button class="btn-secondary" onclick="closeModal()" style="margin-top:20px;width:100%;">关闭</button>
+        </div>
+    </div>
+
+    <!-- 成功提示 -->
+    <div class="modal hidden" id="successModal">
+        <div class="modal-content">
+            <div class="modal-icon">✅</div>
+            <p class="modal-message" id="successMessage"></p>
+            <button class="btn-primary" onclick="closeSuccessModal()" style="margin-top:20px;width:100%;">确定</button>
+        </div>
+    </div>
+
+    <script src="/js/index.js"></script>
+</body>
+</html>
